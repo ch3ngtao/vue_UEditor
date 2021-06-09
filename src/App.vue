@@ -5,8 +5,8 @@
     <button @click="getUEContentTxt()">获取无文本内容</button>
     <div class="editor-container">
       <UE :defaultMsg=defaultMsg :config=config :id=ue1 ref="ue"></UE>
-      <UE :defaultMsg=defaultMsg :config=config :id=ue2 ref="ue2"></UE>
     </div>
+    <!-- <vue-ueditor-wrap v-model="msg"></vue-ueditor-wrap>/ -->
   </div>
 </template>
 <style>
@@ -28,8 +28,9 @@
         config: {
           initialFrameWidth: null,
           initialFrameHeight: 350,
-          BaseUrl: '', 
-          UEDITOR_HOME_URL: '/static/UE/'
+          BaseUrl: '/', 
+          UEDITOR_HOME_URL: '/static/UE/',
+          serverUrl: '//ueditor.szcloudplus.com/cos',
         },
         ue1: "ue1", // 不同编辑器必须不同的id
         ue2: "ue2"
@@ -38,20 +39,10 @@
     methods: {
       getUEContent() {
         let content = this.$refs.ue.getUEContent(); // 调用子组件方法
-        this.$notify({
-          title: '获取成功，可在控制台查看！',
-          message: content,
-          type: 'success'
-        });
         console.log(content)
       },
       getUEContentTxt() {
         let content = this.$refs.ue.getUEContentTxt(); // 调用子组件方法
-        this.$notify({
-          title: '获取成功，可在控制台查看！',
-          message: content,
-          type: 'success'
-        });
         console.log(content)
       }
     }
